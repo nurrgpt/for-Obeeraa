@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Esther ❤️</title>
+    <style>
+        /* The Aesthetic */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fce4ec; /* Soft Pink */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        #card {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 { color: #d81b60; font-size: 24px; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.5; }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn { background-color: #ff4d6d; color: white; font-size: 18px; }
+        
+        #noBtn { 
+            background-color: #eeeeee; 
+            color: #999; 
+            position: absolute; /* Allows it to jump around */
+        }
+
+        .hidden { display: none; }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        img { width: 140px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div id="card">
+        <div id="step1">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp4ZzRnd3p6eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/cLS1cfxvGOPVpf9g3y/giphy.gif">
+            <h1>Hey Esther...</h1>
+            <p>I've been thinking about this for a while now. Will you be my Valentine?</p>
+            <div class="btn-container">
+                <button id="yesBtn">Yes! ✨</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="step2" class="hidden">
+            <h1>Perfect choice, Esther! ❤️</h1>
+            <p>Since you said yes, let's make it official. When are you free?</p>
+            
+            <form action="https://formspree.io/f/your_id_here" method="POST">
+                <input type="hidden" name="name" value="Esther">
+                <select name="activity" required>
+                    <option value="" disabled selected>Pick an activity</option>
+                    <option value="Dinner">Fancy Dinner 🍝</option>
+                    <option value="Coffee">Coffee & Walk ☕</option>
+                    <option value="Movie">Movie Night 🍿</option>
+                </select>
+                <input type="date" name="date" required>
+                <button type="submit" style="background:#ff4d6d; color:white; width:100%; margin-top:10px;">Send Invitation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const step1 = document.getElementById('step1');
+        const step2 = document.getElementById('step2');
+
+        // The "Runaway" Logic
+        noBtn.addEventListener('mouseover', () => {
+            // Calculate random position within the screen
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+
+        // Switch to Step 2
+        yesBtn.addEventListener('click', () => {
+            step1.classList.add('hidden');
+            step2.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
